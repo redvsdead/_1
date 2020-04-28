@@ -11,8 +11,10 @@
 function avg(nums) {
     console.log(nums);
     let res = 0;
-    for (let num of nums)
-        res += +num;
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    res = nums.reduce(reducer);
+    /*for (let num of nums)
+        res += +num;*/
     return res / nums.length;
 
 }
@@ -25,20 +27,22 @@ function deleteMaxMin(arr) {
     for (let i = 1; i < arr.length; ++i) {
         if (arr[i] > max) {
             max = arr[i];
-            max_ind = i;
+            //max_ind = i;
         } else {
             if (arr[i] < min) {
                 min = arr[i];
-                min_ind = i;
+                //min_ind = i;
             }
         }
     }
+
     let res = [];
-    for (let i = 1; i < arr.length; ++i) {
+    res = arr.filter(num => num == min || num == max);
+    /*for (let i = 1; i < arr.length; ++i) {
         if ((i != min_ind) && (i != max_ind)) {
             res.push(arr[i]);
         }
-    }
+    }*/
     return res;
 }
 
